@@ -1,16 +1,16 @@
 # Title Django Blogs
 Djangoで作成したブログサイト
-サイトのURL： https://django-259014.appspot.com/
-ソースコードの保存先　GitHub：https://github.com/ozawaseiya/my-first-blog.git
+サイトのURL： https://djangoblogs.awsmikawa.com/
+ソースコードの保存先　GitHub：https://github.com/ozawaseiya/project
 
 # my-first-blog(name of repository)
 複数人が投稿する会員制ブログサイト
 
 # Dependency
-Python3.7, HTML5, CSS3, MySQL5.7, Django2.1, Bootstrap4
+Python3.7, HTML5, CSS3, MySQL5.7, Django2.2.16, Bootstrap4, nginx, gunicorn
 
 # Setup
-GCP(Google App Engine), Github, ubuntu18.04, Visual Stadio Code, MySQL Workbench
+AWS(IAM,VPC,EC2,RDS,ELB,EIP,Route53,Certificate Manager), Github, ubuntu18.04, Visual Stadio Code, Docker Desktop for Mac
 
 # Usage
 Webシステム機能一覧
