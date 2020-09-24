@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="alert alert-light" role="alert">
+        <div class="post">
+            {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+           
+        {% else %}
+            <a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">公開</a>
+        {% endif %}
+        {% if user.is_authenticated %}
+        {% comment "下記の部分は一時的にコメントアウトします" %}<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}">編集</a>{% endcomment %}
+        {% if request.user.is_superuser %}
+        <a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}">削除</a>
+        {% endif %}
+        　　</div>
+        {% endif %}
+        <h4>投稿内容</h4><p class="date">作成日時: {{ post.created_date|date:'Y-m-d' }}</p>
+        <h4>{{ post.post }}</h4>
+        <div class="boxLine">
+        <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+        {% if post.image %}
+        <img src="{{ post.image.url }}" width=300 height=200>
+        {% endif %}
+    </div>
+    <br/><br/>
+    <div class="container3">
+    <div class="row">
+    <div class="col-xs-6 col-lg-5">
+    <div class="alert alert-success" role="alert">
+    <a href="{% url 'good' post.pk %}" class="btn btn-warning" role="button" aria-pressed="true">いいねを押す</a>
+    <a href="{% url 'read' post.pk %}" class="btn btn-warning" role="button" aria-pressed="true">既読済にする</a>
+    </div></div></div></div>
+    <hr>
+    <a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">コメントの追加</a>
+    {% for comment in post.comments.all %}
+    {% if user.is_authenticated or comment.approved_comment %}
+    <div class="comment">
+        <div class="date">
+            {{ comment.created_date }}
+            {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}">投稿する</a>
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}">削除</a>
+            {% endif %}
+        </div>
+        <div class="alert alert-light" role="alert">
+        <p>{{ forloop.counter }}:{{ comment.author }}</p>
+        <p>{{ comment.text|linebreaks }}</p>
+        </div>
+    </div></div>
+    {% endif %}
+{% empty %}
+<br/><br/>
+    <h4><p>まだコメントがありません</p></h4>
+{% endfor %}
+<br/><br/>
+<h4><a href="/">最初のページへ戻る</a></h4>
+{% endblock %}

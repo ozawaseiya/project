@@ -1,0 +1,40 @@
+{% load static %}
+<html>
+    <head>
+        <title>Django Blogs</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+                <!-- Bootstrap4 -->
+                {% load bootstrap4 %}
+                {% bootstrap_css %}
+                {% bootstrap_javascript jquery='full' %}
+                <!-- Bootstrap4 -->
+    </head>
+    <body>
+        <div class="page-header">
+            {% if user.is_authenticated %}
+                <a href="{% url 'post_new' %}" class="top-menu">新規投稿</a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu"><p>下書き</p></a>
+                {{ user.username }}さんログイン中
+                <p class="top-menu">
+                <a href="{% url 'logout' %}">ログアウト</a>
+                <a href="{% url 'delete' %}">退会</a>
+                </p>
+                {% else %}
+                <a href="{% url 'login' %}" class="top-menu">ログイン</a>
+                <a href="{% url 'signup' %}" class="top-menu">サインアップ</a>
+            {% endif %}
+            <h1><a href="/">Django Blogs</a></h1>
+        </div>
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

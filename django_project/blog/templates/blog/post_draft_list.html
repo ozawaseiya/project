@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+    <div class="alert alert-light" role="alert">
+        <div class="post">
+            <p class="date">作成日時: {{ post.created_date|date:'Y-m-d' }}</p>
+            <h2><a href="{% url 'post_detail' pk=post.pk %}">{{ post.post }}</a></h2>
+            <p>{{ post.text|truncatechars:200 }}</p>
+            {% if post.image %}
+            <img src="{{ post.image.url }}" width=300>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+    <h4><a href="/">最初のページへ戻る</a></h4>
+{% endblock %}

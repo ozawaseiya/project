@@ -1,0 +1,11 @@
+*.pyc
+*~
+__pycache__
+myvenv
+db.sqlite3
+/static
+.DS_Store
+.gcloudignore
+app.yaml
+cloud_sql_proxy
+Django-bb646ca7cceb.json

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+ 
+{% if form.errors %}
+<p>あなたのユーザー名又はパスワードが間違っています。もう一度正しい値を入力してください。</p>
+{% endif %}
+ 
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>あなたのアカウントはこのページにアクセスできません。適切なアカウントでログインしてください。</p>
+    {% else %}
+    <p>この先はログインしてください。</p>
+    {% endif %}
+{% endif %}
+<h3>ユーザーログイン</h3>
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<table>
+<tr>
+    <td>{{ form.username.label_tag }}</td>
+    <td>{{ form.username }}</td>
+</tr>
+<tr>
+    <td>{{ form.password.label_tag }}</td>
+    <td>{{ form.password }}</td>
+</tr>
+</table>
+ 
+<input type="submit" value="ログイン" />
+<input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endblock %}

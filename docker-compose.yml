@@ -1,0 +1,44 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    container_name: django_db
+    env_file: ./mysql/.env
+    ports:
+      - "3306:3306"
+    networks:
+      app_net:
+        ipv4_address: 172.20.0.3
+    depends_on:
+      - django
+
+  django:
+    build: ./django
+    container_name: django
+    ports:
+      - "8000:80"
+    volumes:
+      - ./:/src
+    networks:
+      app_net:
+        ipv4_address: 172.20.0.2
+    tty: true
+    
+  nginx:            
+    build: ./django  
+    container_name: django_nginx      
+    ports:
+      - "8080:80"        
+    volumes:
+      - ./public:/usr/share/nginx/html     
+    
+
+networks:
+  app_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24
+volumes:
+  est-data:
