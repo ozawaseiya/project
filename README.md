@@ -3,7 +3,7 @@ Djangoで作成したブログサイト
 サイトのURL： https://djangoblogs.awsmikawa.com/
 ソースコードの保存先　GitHub：https://github.com/ozawaseiya/project
 
-# my-first-blog(name of repository)
+# project(name of repository)
 複数人が投稿する会員制ブログサイト
 
 # Dependency
