@@ -6,7 +6,8 @@ RUN apt-get -y update \
   && rm -rf /var/lib/apt/lists/* \
   && echo "ja_JP UTF-8" > /etc/locale.gen \
   && locale-gen
-RUN apt-get update && apt-get install -y nginx
+RUN apt-get update && \
+    apt-get install nginx -y 
 
 WORKDIR /src
 ADD ./ /src/
