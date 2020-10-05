@@ -173,3 +173,6 @@ MEDIA_URL = '/media/'
 #STATIC_ROOT = '/usr/share/nginx/html/static'
 #MEDIA_URL = '/media/'
 #MEDIA_ROOT = '/usr/share/nginx/html/media'
+
+FILE_UPLOAD_MAX_MEMORY_SIZE = 8388608
+FILE_UPLOAD_PERMISSIONS=0o2755
