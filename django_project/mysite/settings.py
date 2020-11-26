@@ -26,7 +26,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'mtx&hd6hoypz=_-%t*xcon4o6ikq5v=i3xgb&f1!qb)+6hyw4z'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['djangoblogs.awsmikawa.com','175.41.202.116']
 
