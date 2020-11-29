@@ -1,6 +1,8 @@
 # Title Django Blogs
 Djangoで作成したブログサイト
+
 サイトのURL： https://djangoblogs.awsmikawa.com/
+
 ソースコードの保存先　GitHub：https://github.com/ozawaseiya/project
 
 # project(name of repository)
